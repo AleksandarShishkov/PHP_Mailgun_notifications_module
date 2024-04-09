@@ -4,4 +4,4 @@
 Mailgun plugin integration, Asynchronous Notification Worker, Error Logging
 
 ## Technologies user
-PHP, MySQL
+PHP, MySQL, JavaScript
