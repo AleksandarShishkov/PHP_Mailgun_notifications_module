@@ -26,5 +26,35 @@
             return $result;
 
         }
+
+        public function insert_record($table, $recipient, $subject, $body) {
+
+            $sql = "INSERT INTO $table(
+                                    recipient,
+                                    subject,
+                                    body
+                                )VALUES(
+                                    '$recipient',
+                                    '$subject',
+                                    '$body'
+                                )";
+
+            $result = $this->query($sql);
+
+            return $result;
+        
+        }
+
+        public function update_db($table, $id) {
+
+            $sql = "UPDATE notifications
+                          SET status='sent'
+                          WHERE id=$id";
+
+            $result = $this->query($sql);
+
+            return $result;
+
+        }
         
     }

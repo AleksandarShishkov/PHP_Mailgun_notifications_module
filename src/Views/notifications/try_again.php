@@ -13,6 +13,6 @@
     </div>
 
     <div>
-        <a href="../../../index.php"><button>Try again</button></a>
+        <a href="../../../index.php?controller=HomeController&method=index"><button>Try again</button></a>
     </div>
 </div>

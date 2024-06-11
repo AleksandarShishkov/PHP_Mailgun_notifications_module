@@ -4,7 +4,7 @@
 
     class CheckOnWorkerController {
 
-        public function check() {
+        public static function check() {
 
             $log_file_path = __DIR__ . '/../../Jobs/Log/error_log.log';
             $log_contents = file_get_contents($log_file_path);

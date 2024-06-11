@@ -4,40 +4,21 @@
 
     class PushNotification extends Database{
 
-        private $recipient;
-        private $subject;
-        private $body;
-        private $sql;
-
-
         public function push() {
 
-            isset($_POST['recipient']) ? $this->recipient = $_POST['recipient'] : $this->recipient = '';
-            isset($_POST['subject']) ? $this->subject = $_POST['subject'] : $this->subject = '';
-            isset($_POST['body']) ? $this->body = $_POST['body'] : $this->body = '';
+            isset($_POST['recipient']) ? $recipient = $_POST['recipient'] : $recipient = '';
+            isset($_POST['subject']) ? $subject = $_POST['subject'] : $subject = '';
+            isset($_POST['body']) ? $body = $_POST['body'] : $body = '';
+            $table = 'notifications';
 
-            if($this->subject != ' ') {
-
-                $this->sql = "INSERT INTO notifications(
-                                           recipient,
-                                           subject,
-                                           body
-                                         )VALUES(
-                                           '$this->recipient',
-                                           '$this->subject',
-                                           '$this->body'
-                                         )";
-                                         
-                
-                
-                
-                if($this->query($this->sql)) {
-                    header('Location:src/Views/notifications/push_notification.php?success=Notification pushed!');
-                    die();
-                }
+            if(!$this->insert_record($table, $recipient, $subject, $body)) {                
+                                
+                header('Location:src/Views/notifications/push_notification.php?error=Something went wrong. Try again!');
+                die();
+            
             }
 
-            header('Location:src/Views/notifications/push_notification.php?error=All fields should contain a value!');
+            header('Location:src/Views/notifications/push_notification.php?success=Notification pushed!');
             die();
 
         }

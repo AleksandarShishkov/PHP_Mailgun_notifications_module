@@ -9,36 +9,39 @@
 
     class SendNotification extends Database{
     
-        private $pending_notifications;
-        private $mailer;
-        private $sql;
+        private $table;
 
+        public function __construct() {
+            $this->table = 'notifications';
+        }
 
         public function send_notifications() {
 
-            $this->sql = "SELECT id, recipient, subject, body
+            $sql = "SELECT id, recipient, subject, body
                           FROM notifications
                           WHERE status='pending'";
 
-            $this->pending_notifications = $this->query($this->sql);
-            foreach($this->pending_notifications as $notification) {
-                $this->mailer = new Mailer($notification);
+            $pending_notifications = $this->query($sql);
+            
+            foreach($pending_notifications as $notification) {
+
+                $mailer = new Mailer($notification);
                 
-                $this->mailer->send();
-                
+                $mailer->send();
+
                 $this->update_notification_status($notification['id']);
                 
             }
-        }
 
+        }
 
         public function update_notification_status($id) {
             
-            $this->sql = "UPDATE notifications
-                          SET status='sent'
-                          WHERE id=$id";
+            if(!$this->update_db($this->table, $id)) {
+                header('Location:src/Views/notifications/push_notification.php?error=Couldn`t update the record. Check the DB!');
+                die();
+            }
 
-            $this->query($this->sql);
         }
 
     }

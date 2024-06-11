@@ -6,6 +6,7 @@
 
         private $push_model;
 
+        
         public function __construct() {
             $this->push_model = new PushNotification();
         }

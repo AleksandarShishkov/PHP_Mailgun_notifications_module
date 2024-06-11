@@ -1,7 +1,0 @@
-
-Warning: require_once(C:\xampp\htdocs\PHPMailGunIntegration\PHP_Mailgun_notifications_module\src\Jobs/../Controllers/SendNotificationController.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\PHPMailGunIntegration\PHP_Mailgun_notifications_module\src\Jobs\send_notifications_worker.php on line 3
-
-Fatal error: Uncaught Error: Failed opening required 'C:\xampp\htdocs\PHPMailGunIntegration\PHP_Mailgun_notifications_module\src\Jobs/../Controllers/SendNotificationController.php' (include_path='.;C:\php\pear') in C:\xampp\htdocs\PHPMailGunIntegration\PHP_Mailgun_notifications_module\src\Jobs\send_notifications_worker.php:3
-Stack trace:
-#0 {main}
-  thrown in C:\xampp\htdocs\PHPMailGunIntegration\PHP_Mailgun_notifications_module\src\Jobs\send_notifications_worker.php on line 3

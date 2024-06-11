@@ -7,8 +7,7 @@
         public static function createObject($controller) {
 
             switch($controller) {
-
-                case 'push_notification':
+                case 'PushNotificationController':
                     return new PushNotificationController();
                     break;
 
