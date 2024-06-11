@@ -27,7 +27,7 @@
         public static function get_mailgun_val($key) {
 
             self::init();
-            return self::$mailgun_vals($key) ?? '';
-            
+            return self::$mailgun_vals[$key] ?? '';
+
         }
     }
