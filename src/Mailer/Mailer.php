@@ -1,6 +1,6 @@
 <?php
 
-    require_once __DIR__ . '/../config.php';
+    require_once __DIR__ . '/../config/Mailgun/ConfigMailgun.php';
     require_once __DIR__ . '/../../vendor/autoload.php';
 
     use Mailgun\Mailgun;
@@ -13,17 +13,20 @@
         private $notification;
         private $configurator;
 
-
         public function __construct($notification) {
 
-            $this->configurator = new HttpClientConfigurator();
-            $this->configurator->setApiKey(MAILGUN_API_KEY);
-            parent::__construct($this->configurator);
-            $this->domain = MAILGUN_DOMAIN;
-            $this->sender = SENDER;
-            $this->notification = $notification;
-        }
+            $api_key = ConfigMailgun::get_mailgun_val('mailgun_apy_key');
+            $mailgun_domain = ConfigMailgun::get_mailgun_val('mailgun_domain');
+            $sender = ConfigMailgun::get_mailgun_val('sender');
 
+            $this->configurator = new HttpClientConfigurator();
+            $this->configurator->setApiKey($api_key);
+            parent::__construct($this->configurator);
+            $this->domain = $mailgun_domain;
+            $this->sender = $sender;
+            $this->notification = $notification;
+     
+        }
 
         public function send() {                
             
