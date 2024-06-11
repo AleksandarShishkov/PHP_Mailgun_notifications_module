@@ -1,24 +1,15 @@
 <?php
 
-    require_once __DIR__ . '/src/db/database_ini.php';
-    require_once __DIR__ . '/src/Controllers/HomeController.php';
-    require_once __DIR__ . '/src/Controllers/CheckOnWorkerController.php';
-    require_once __DIR__ . '/src/Controllers/PushNotificationController.php';
+    require_once __DIR__ . '/src/includes/includes.php';
+    require_once __DIR__ . '/src/router/Router.php';
 
-    $home = new HomeController();
-    $check_worker = new CheckOnWorkerController();
-    $notification = new PushNotificationController();
+    
+    $router = new Router();
 
-    $check_worker->check();
+    $route = isset($_GET['controller']) ? $_GET : ['method' => 'index'];
+    
+    $router->route($route);
 
-    isset($_POST['push_notification']) ? $action = 'push_notification' : $action = '';
 
-    switch($action) {
-        case 'push_notification':
-            $notification->push_to_queue();
-            break;
 
-        default:
-            $home->index();
-            break;
-    }
+    // $check_worker->check();

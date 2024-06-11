@@ -15,7 +15,7 @@
     </div>
 
     <div>
-        <form class="form_style" method="POST" action="../../../index.php">
+        <form class="form_style" method="POST" action="../../../index.php?controller=PushNotificationController&method=push_to_queue">
 
             <label for="recipient">Recipient`s email:</label><br>
             <input type="email" name="recipient" id="recipient" required><br><br>
@@ -26,7 +26,7 @@
             <label for="body">Body text:</label><br>
             <textarea name="body" id="body" rows="5" required></textarea><br><br>
 
-            <input type="submit" class="submit_btn" name="push_notification" value="Push to queue">
+            <input type="submit" class="submit_btn">
         </form>
     </div>
 

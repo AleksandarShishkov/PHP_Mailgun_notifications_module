@@ -1,8 +1,7 @@
 <?php
 
-    require_once __DIR__ . '/../Models/PushNotification.php';
+    require_once __DIR__ . '/../../Models/PushNotification.php';
 
-    
     class PushNotificationController {
 
         private $push_model;
