@@ -47,7 +47,7 @@
 
         public function update_db($table, $id) {
 
-            $sql = "UPDATE notifications
+            $sql = "UPDATE $table
                           SET status='sent'
                           WHERE id=$id";
 
