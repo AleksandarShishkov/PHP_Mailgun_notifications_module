@@ -1,7 +1,6 @@
 <?php
 
-    require_once __DIR__ . '/../Models/SendNotification.php';
-
+    require_once __DIR__ . '/../../Models/SendNotification.php';
 
     class SendNotificationController {
 
